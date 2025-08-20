@@ -11,7 +11,6 @@ nmap <silent> gt <Plug>(coc-type-definition)
 nmap gf gf
 
 nnoremap <silent> $ :call CocActionAsync('doHover')<CR>
-nnoremap K $
 
 " === Completion ===
 " Trigger completion manually

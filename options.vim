@@ -24,6 +24,26 @@ set autoread           " reload files changed outside vim
 set wrap               " don't wrap lines
 set noswapfile         " disable swap files
 
+" ======================================
+" Catppuccin line + number highlighting
+" ======================================
+
+" Highlight the current line with a subtle background
+highlight CursorLine guibg=#313244 ctermbg=236
+
+" Dim normal line numbers
+highlight LineNr guifg=#ef2f81 ctermfg=243
+
+" Make current line number stand out (Catppuccin green accent)
+highlight CursorLineNr guifg=#a6e3a1 gui=bold ctermfg=120
+
+" Optional: color for the sign column (gutter)
+highlight SignColumn guibg=#1e1e2e ctermbg=234
+
+" Optional: matching cursor column background
+highlight CursorColumn guibg=#313244 ctermbg=236
+
+
 " Tabs and indentation
 set tabstop=4
 set shiftwidth=4
@@ -101,4 +121,10 @@ let g:csv_highlight_row = 'y'
 " ======================================
 " Force .cl files to open as opencl
 au BufRead,BufNewFile *.cl set filetype=opencl
+
+
+" enable wildmenu (better CLI completion menu)
+set wildmenu
+" show matches as you type
+set wildmode=list:longest,full
 

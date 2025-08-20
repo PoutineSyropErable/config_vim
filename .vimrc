@@ -7,8 +7,14 @@ Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Telescope Equivalent
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim' 
+
+
+" Optional: File icons
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
