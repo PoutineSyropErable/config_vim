@@ -1,27 +1,32 @@
+" === LSP Setup ===
+let g:lsp_log_verbose = 1
 
-" === LSP Keymaps ===
+" Key mappings (safe even if LSP server isn't attached yet)
+nnoremap <silent> gd <Plug>(lsp-definition)
+nnoremap <silent> gr <Plug>(lsp-references)
+nnoremap <silent> gi <Plug>(lsp-implementation)
+nnoremap <silent> gt <Plug>(lsp-type-definition)
+nnoremap <silent> K <Plug>(lsp-hover)
+nnoremap <silent> <leader>rn <Plug>(lsp-rename)
+nnoremap <silent> <leader>f <Plug>(lsp-format)
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> K :call CocActionAsync('doHover')<CR>
-" Go to type definition
-nmap <silent> gt <Plug>(coc-type-definition)
-" Go to file under cursor (Vim default)
-nmap gf gf
+" === Autocomplete Setup ===
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_hover = 1
 
-nnoremap <silent> $ :call CocActionAsync('doHover')<CR>
+" Register LSP as autocomplete source safely after Vim is ready
+autocmd VimEnter * call asyncomplete#register_source({
+      \ 'name': 'lsp',
+      \ 'allow_list': ['*'],
+      \ 'mark': 'L',
+      \ 'complete': function('asyncomplete#sources#lsp#complete') })
 
-" === Completion ===
-" Trigger completion manually
-inoremap <silent><expr> <C-Space> coc#refresh()
+" Completion key mappings
+inoremap <silent><expr> <C-Space> asyncomplete#force_refresh()
+inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Confirm completion with <CR>
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-" Confirm completion only if popup menu is visible, otherwise insert newline
-inoremap <silent><expr> <CR> pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+" Omnifunc for filetypes
+autocmd FileType python,cpp,java,yaml,json setlocal omnifunc=lsp#complete
 
-
-" Navigate popup menu
-inoremap <expr> <Tab>   coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
