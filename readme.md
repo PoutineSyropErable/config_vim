@@ -14,7 +14,15 @@ This repository contains a Vim configuration using `~/.config/vim` structure wit
 ### 1. Clone the repository
 
 ```bash
+# Backup existing ~/.config/nvim if it exists, using numbered backups (~1, ~2, etc.)
+[ -d ~/.config/vim ] && mv --backup=numbered ~/.config/vim ~/.config/vim_backup
 git clone https://github.com/PoutineSyropErable/config_vim.git ~/.config/vim
+
+
+[ -f ~/.vimrc ] && mv --backup=numbered ~/.vimrc ~/.vimrc.bak
+ln -s ~/.config/vim/.vimrc ~/.vimrc 
+
+#optional 
 cd ~/.config/vim
 ```
 
