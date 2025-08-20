@@ -17,7 +17,10 @@ nnoremap <silent> $ :call CocActionAsync('doHover')<CR>
 inoremap <silent><expr> <C-Space> coc#refresh()
 
 " Confirm completion with <CR>
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" Confirm completion only if popup menu is visible, otherwise insert newline
+inoremap <silent><expr> <CR> pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+
 
 " Navigate popup menu
 inoremap <expr> <Tab>   coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"

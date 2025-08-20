@@ -1,5 +1,5 @@
 " === Plugin manager ===
-call plug#begin('~/.vim/plugged')
+call plug#begin('$HOME/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
@@ -19,9 +19,9 @@ call plug#end()
 
 
 
-source ~/.config/vim/keymaps.vim
-source ~/.config/vim/options.vim
-source ~/.config/vim/plugins/lsp.vim
-source ~/.config/vim/plugins/comments.vim
-source ~/.config/vim/plugins/buffer_airline.vim
-source ~/.config/vim/plugins/telescope_equivalent.vim
+source $HOME/.config/vim/keymaps.vim
+source $HOME/.config/vim/options.vim
+source $HOME/.config/vim/plugins/lsp.vim
+source $HOME/.config/vim/plugins/comments.vim
+source $HOME/.config/vim/plugins/buffer_airline.vim
+source $HOME/.config/vim/plugins/telescope_equivalent.vim

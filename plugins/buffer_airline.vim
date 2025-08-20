@@ -17,3 +17,8 @@ for i in range(1, 9)
   execute 'vnoremap <silent> <leader>' . i . ' :buffer ' . i . '<CR>'
 endfor
 
+
+
+
+
+
