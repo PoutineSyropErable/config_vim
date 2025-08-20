@@ -29,13 +29,15 @@ cd ~/.config/vim
 
 ### 2. Install Vim-Plug (if not already installed)
 ```bash
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+# Using curl
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 ```
 
 ```bash
-wget -O ~/.local/share/nvim/site/autoload/plug.vim \
+wget -O ~/.vim/autoload/plug.vim \
      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ```
