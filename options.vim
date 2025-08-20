@@ -81,10 +81,10 @@ set listchars=tab:>-,trail:·,space:·,eol:¬,precedes:«,extends:»
 " Undo
 " ======================================
 set undofile
-if !isdirectory(expand("~/.vim/undo"))
-    call mkdir(expand("~/.vim/undo"), "p")
+if !isdirectory(expand("$HOME/.vim/undo"))
+    call mkdir(expand("$HOME/.vim/undo"), "p")
 endif
-set undodir=~/.vim/undo
+set undodir=$HOME/.vim/undo
 
 " ======================================
 " Format options
@@ -103,10 +103,10 @@ sign define DapLogPoint text=📝 texthl=Question linehl= numhl=
 " ======================================
 " Verbose logging
 " ======================================
-if !isdirectory(expand("~/.vim_logs"))
-    call mkdir(expand("~/.vim_logs"), "p")
+if !isdirectory(expand("$HOME/.vim_logs"))
+    call mkdir(expand("$HOME/.vim_logs"), "p")
 endif
-set verbosefile=~/.vim_logs/vim_log.txt
+set verbosefile=$HOME/.vim_logs/vim_log.txt
 set verbose=12
 
 " ======================================
