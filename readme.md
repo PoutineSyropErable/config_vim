@@ -47,6 +47,7 @@ from the command line:
 
 ```bash
 vim +PlugInstall +qall
+
 ```
 
 
