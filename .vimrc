@@ -3,7 +3,7 @@
 source $HOME/.config/vim/pre_config.vim
 
 call plug#begin('$HOME/.vim/plugged')
-" Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
 
 Plug 'vim-airline/vim-airline'
@@ -15,7 +15,7 @@ Plug 'junegunn/fzf.vim'
 
 
 " Optional: File icons
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 Plug 'prabirshrestha/vim-lsp'
 " Plug 'prabirshrestha/vim-lsp-settings'
@@ -31,5 +31,5 @@ source $HOME/.config/vim/options.vim
 source $HOME/.config/vim/plugins/comments.vim
 source $HOME/.config/vim/plugins/buffer_airline.vim
 source $HOME/.config/vim/plugins/telescope_equivalent.vim
-" source $HOME/.config/vim/plugins/lsp.vim
+source $HOME/.config/vim/plugins/lsp.vim
 source $HOME/.config/vim/plugins/lsp_default.vim
