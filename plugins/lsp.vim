@@ -1,5 +1,8 @@
 " === LSP Setup ===
 let g:lsp_log_verbose = 1
+let g:lsp_disable_auto_mappings = 1
+let g:lsp_semantic_highlight = 1  " Enable semantic highlighting
+
 
 if executable('pyright')
     " npm install -g pyright
@@ -9,6 +12,16 @@ if executable('pyright')
           \ 'allowlist': ['python'],
           \ })
 endif
+
+" Function to restore default Vim scrolling
+function! s:restore_default_scrolling() abort
+    " Remove LSP scroll mappings if they exist
+    silent! nunmap <buffer> <C-d>
+    silent! nunmap <buffer> <C-u>
+    " Restore default Vim scrolling
+    nnoremap <buffer> <C-d> <C-d>
+    nnoremap <buffer> <C-u> <C-u>
+endfunction
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
@@ -27,9 +40,9 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> $ <plug>(lsp-hover)
 
-    " Scrolling
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+    " Scrolling (LSP-specific)
+    nnoremap <buffer> <expr><c-r> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(-4)
 
     " Additional mappings
     nnoremap <buffer> <silent> <leader>Lr <Plug>(lsp-rename)
@@ -37,11 +50,20 @@ function! s:on_lsp_buffer_enabled() abort
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " Restore normal scrolling after LSP maps its keys
+    call s:restore_default_scrolling()
 endfunction
 
 augroup lsp_install
     au!
     " Call s:on_lsp_buffer_enabled only for registered languages
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+" Ensure default Vim scrolling for all LSP buffers
+augroup fix_lsp_scroll
+    au!
+    autocmd User lsp_buffer_enabled call s:restore_default_scrolling()
 augroup END
 

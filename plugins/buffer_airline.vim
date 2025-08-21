@@ -1,6 +1,8 @@
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline_suppress_hl_messages = 1
+let g:airline#verbose = 0
+
 
 
 nnoremap <silent> <C-n> :bnext<CR>

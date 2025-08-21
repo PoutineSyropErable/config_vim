@@ -16,3 +16,10 @@ inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+
+" Change popup menu background
+highlight Pmenu guibg=#1e1e2e guifg=#cdd6f4
+highlight PmenuSel guibg=#313244 guifg=#f5c2e7
+highlight PmenuSbar guibg=#313244
+highlight PmenuThumb guibg=#f38ba8
+

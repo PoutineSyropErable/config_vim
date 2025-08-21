@@ -21,7 +21,7 @@ set laststatus=2       " always show status line
 set autowrite          " automatically save before commands
 set cursorline         " highlight current line
 set autoread           " reload files changed outside vim
-set wrap               " don't wrap lines
+set nowrap               " don't wrap lines
 set noswapfile         " disable swap files
 
 "" ======================================

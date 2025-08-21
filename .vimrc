@@ -18,9 +18,11 @@ Plug 'junegunn/fzf.vim'
 " Plug 'ryanoasis/vim-devicons'
 
 Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/vim-lsp-settings'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -32,4 +34,4 @@ source $HOME/.config/vim/plugins/comments.vim
 source $HOME/.config/vim/plugins/buffer_airline.vim
 source $HOME/.config/vim/plugins/telescope_equivalent.vim
 source $HOME/.config/vim/plugins/lsp.vim
-source $HOME/.config/vim/plugins/lsp_default.vim
+source $HOME/.config/vim/plugins/lsp_autocomplete.vim
