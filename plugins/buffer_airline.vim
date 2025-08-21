@@ -8,8 +8,8 @@ nnoremap <silent> <C-b> :bprevious<CR>
 vnoremap <silent> <C-n> :bnext<CR>
 vnoremap <silent> <C-b> :bprevious<CR>
 
-nnoremap <silent> <leader>q :bdelete<C
-vnoremap <silent> <leader>q :bdelete<C
+nnoremap <silent> <leader>q :bdelete<CR>
+vnoremap <silent> <leader>q :bdelete<CR>
 
 " Map <leader>1..9 to switch to buffer 1..9
 for i in range(1, 9)

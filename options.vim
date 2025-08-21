@@ -1,6 +1,6 @@
-" ======================================
-" Catppuccin colorscheme
-" ======================================
+ "======================================
+ "Catppuccin colorscheme
+ "======================================
 set background=dark
 set termguicolors
 
@@ -24,27 +24,27 @@ set autoread           " reload files changed outside vim
 set wrap               " don't wrap lines
 set noswapfile         " disable swap files
 
-" ======================================
-" Catppuccin line + number highlighting
-" ======================================
+"" ======================================
+"" Catppuccin line + number highlighting
+"" ======================================
 
-" Highlight the current line with a subtle background
+"" Highlight the current line with a subtle background
 highlight CursorLine guibg=#313244 ctermbg=236
 
-" Dim normal line numbers
+"" Dim normal line numbers
 highlight LineNr guifg=#ef2f81 ctermfg=243
 
-" Make current line number stand out (Catppuccin green accent)
+"" Make current line number stand out (Catppuccin green accent)
 highlight CursorLineNr guifg=#a6e3a1 gui=bold ctermfg=120
 
-" Optional: color for the sign column (gutter)
+"" Optional: color for the sign column (gutter)
 highlight SignColumn guibg=#1e1e2e ctermbg=234
 
-" Optional: matching cursor column background
+"" Optional: matching cursor column background
 highlight CursorColumn guibg=#313244 ctermbg=236
 
 
-" Tabs and indentation
+"" Tabs and indentation
 set tabstop=4
 set shiftwidth=4
 set shiftround
@@ -52,34 +52,34 @@ set noexpandtab        " use actual tabs
 set autoindent
 set smartindent
 
-" Mouse support
+"" Mouse support
 set mouse=nvc
-" Vim may not support 'mousemoveevent'; you can remove if it errors
+"" Vim may not support 'mousemoveevent'; you can remove if it errors
 " set mousemoveevent
 
-" ======================================
-" Line numbers
-" ======================================
+"" ======================================
+"" Line numbers
+"" ======================================
 set number             " show absolute line number on cursor line
 set relativenumber     " show relative numbers for other lines
-" Optional: highlight current line number differently (if colorscheme supports)
-" highlight CursorLineNr ctermfg=Green guifg=#00ff00
+"" Optional: highlight current line number differently (if colorscheme supports)
+highlight CursorLineNr ctermfg=Green guifg=#00ff00
 
-" ======================================
-" Searching
-" ======================================
+"" ======================================
+"" Searching
+"" ======================================
 set ignorecase         " case-insensitive searches
 set smartcase          " override if uppercase used
 
-" ======================================
-" List characters
-" ======================================
+"" ======================================
+"" List characters
+"" ======================================
 set nolist
 set listchars=tab:>-,trail:·,space:·,eol:¬,precedes:«,extends:»
 
-" ======================================
-" Undo
-" ======================================
+"" ======================================
+"" Undo
+"" ======================================
 set undofile
 if !isdirectory(expand("$HOME/.vim/undo"))
     call mkdir(expand("$HOME/.vim/undo"), "p")
@@ -104,10 +104,10 @@ sign define DapLogPoint text=📝 texthl=Question linehl= numhl=
 " Verbose logging
 " ======================================
 if !isdirectory(expand("$HOME/.vim_logs"))
-    call mkdir(expand("$HOME/.vim_logs"), "p")
+	call mkdir(expand("$HOME/.vim_logs"), "p")
 endif
 set verbosefile=$HOME/.vim_logs/vim_log.txt
-set verbose=12
+set verbose=1
 
 " ======================================
 " CSV plugin settings (if installed)
@@ -116,10 +116,10 @@ let g:csv_no_progress = 1
 let g:csv_highlight_column = 'y'
 let g:csv_highlight_row = 'y'
 
-" ======================================
-" Filetype overrides
-" ======================================
-" Force .cl files to open as opencl
+"" ======================================
+"" Filetype overrides
+"" ======================================
+"" Force .cl files to open as opencl
 au BufRead,BufNewFile *.cl set filetype=opencl
 
 
