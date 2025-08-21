@@ -10,4 +10,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim +PlugInstall +qall
-cd ~/.config/vim
+
+apt install npm && npm -g pyright || echo "yeah this was for ubuntu testing"
+
+cd ~/.config/vim || echo "weird"
+# vim test.py

@@ -11,6 +11,11 @@ This repository contains a Vim configuration using `~/.config/vim` structure wit
 
 ## Installation
 
+fast way: 
+```
+curl -fsSL https://raw.githubusercontent.com/PoutineSyropErable/config_vim/main/install.sh | bash
+```
+
 ### 1. Clone the repository
 
 ```bash
