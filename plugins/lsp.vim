@@ -34,8 +34,11 @@ function! s:on_lsp_buffer_enabled() abort
 	nnoremap <leader>h :pclose<CR>
 
     " Scrolling (LSP-specific)
-    nnoremap <buffer> <expr><c-r> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(-4)
+    " nnoremap <buffer> <expr><c-r> lsp#scroll(+4)
+    " nnoremap <buffer> <expr><c-f> lsp#scroll(-4)
+	
+	nmap <expr><buffer> <c-d> popup_list()->empty() ? '<c-d>' : lsp#scroll(+4)
+    nmap <expr><buffer> <c-e> popup_list()->empty() ? '<c-u>' : lsp#scroll(-4)
 
     " Additional mappings
     nnoremap <buffer> <silent> <leader>Lr <Plug>(lsp-rename)

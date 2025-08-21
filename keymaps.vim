@@ -42,13 +42,20 @@ vnoremap H I
 
 " ---------------- Page Navigation
 nnoremap <CR> o<Esc>
+
+" map Ctrl+d to scroll down 1/2 screen. Ctrl+e up 1/2 screen
 nnoremap <C-d> <C-d>
 nnoremap <C-e> <C-u>
-vnoremap <C-e> <C-u>
+
+" scroll down/up one line (change the viewport)
 nnoremap <C-f> <C-e>
 nnoremap <C-r> <C-y>
+
+"repair redo:
 nnoremap <C-y> <C-r>
 nnoremap R <C-r>
+
+" repair 'enter replace mode'
 nnoremap <leader>R R
 
 " ---------------- Indent
