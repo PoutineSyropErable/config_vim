@@ -7,6 +7,15 @@ set termguicolors
 " Set the flavor you want: mocha, latte, frappe, macchiato
 colorscheme catppuccin_mocha
 
+" Then add custom Python highlighting
+augroup pythonCapitalHighlight
+  autocmd!
+  autocmd FileType python syntax match pythonClassType "\<[A-Z][a-zA-Z0-9_]*\>"
+  autocmd FileType python highlight pythonClassType guifg=#F8E1AF gui=bold
+  autocmd FileType python syntax match pythonConstant "\<[A-Z_][A-Z0-9_]*\>"
+  autocmd FileType python highlight pythonConstant guifg=#FFA500 gui=bold
+augroup END
+
 " ======================================
 " General settings
 " ======================================
