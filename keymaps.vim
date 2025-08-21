@@ -130,10 +130,30 @@ nnoremap <C-s>h :vsplit<CR>
 nnoremap <C-s>x :q<CR>
 
 " ---------------- Replace functions (simple placeholders)
-nnoremap <C-g> :echo "Replace with confirmation"<CR>
-nnoremap <C-h> :echo "Replace with input"<CR>
-nnoremap <leader>rc :echo "Replace with confirmation"<CR>
-nnoremap <leader>ry :echo "Replace with input"<CR>
+" Replace with input (no confirmation)
+function! Replace_with_input()
+  let old_char = input("Replace character: ")
+  let new_char = input("Replace with: ")
+  if old_char !=# '' && new_char !=# ''
+    execute '%s/' . old_char . '/' . new_char . '/g'
+  endif
+endfunction
+
+" Replace with confirmation
+function! Replace_with_confirmation()
+  let old_char = input("Replace character: ")
+  let new_char = input("Replace with: ")
+  if old_char !=# '' && new_char !=# ''
+    execute '%s/' . old_char . '/' . new_char . '/gc'
+  endif
+endfunction
+
+" Key mappings
+nnoremap <C-g> :call Replace_with_confirmation()<CR>
+nnoremap <C-h> :call Replace_with_input()<CR>
+nnoremap <leader>rc :call Replace_with_confirmation()<CR>
+nnoremap <leader>ry :call Replace_with_input()<CR>
+
 
 " ---------------- Jump list
 nnoremap <C-o> <C-o>
