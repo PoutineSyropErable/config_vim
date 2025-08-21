@@ -2,6 +2,7 @@
 let g:lsp_log_verbose = 1
 let g:lsp_disable_auto_mappings = 1
 let g:lsp_semantic_highlight = 1  " Enable semantic highlighting
+let g:lsp_settings_suppress_notifications = 1
 
 
 if executable('pyright')
