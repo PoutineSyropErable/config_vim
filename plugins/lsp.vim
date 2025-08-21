@@ -13,15 +13,15 @@ if executable('pyright')
           \ })
 endif
 
-" Function to restore default Vim scrolling
-function! s:restore_default_scrolling() abort
-    " Remove LSP scroll mappings if they exist
-    silent! nunmap <buffer> <C-d>
-    silent! nunmap <buffer> <C-u>
-    " Restore default Vim scrolling
-    nnoremap <buffer> <C-d> <C-d>
-    nnoremap <buffer> <C-u> <C-u>
-endfunction
+"" Function to restore default Vim scrolling
+"function! s:restore_default_scrolling() abort
+"    " Remove LSP scroll mappings if they exist
+"    silent! nunmap <buffer> <C-d>
+"    silent! nunmap <buffer> <C-u>
+"    " Restore default Vim scrolling
+"    nnoremap <buffer> <C-d> <C-d>
+"    nnoremap <buffer> <C-u> <C-u>
+"endfunction
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
@@ -61,9 +61,9 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-" Ensure default Vim scrolling for all LSP buffers
-augroup fix_lsp_scroll
-    au!
-    autocmd User lsp_buffer_enabled call s:restore_default_scrolling()
-augroup END
+"" Ensure default Vim scrolling for all LSP buffers
+"augroup fix_lsp_scroll
+"    au!
+"    autocmd User lsp_buffer_enabled call s:restore_default_scrolling()
+"augroup END
 
