@@ -17,10 +17,10 @@ Plug 'junegunn/fzf.vim'
 " Optional: File icons
 Plug 'ryanoasis/vim-devicons'
 
- Plug 'prabirshrestha/vim-lsp'
- Plug 'prabirshrestha/vim-lsp-settings'
- Plug 'prabirshrestha/asyncomplete.vim'
- Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
