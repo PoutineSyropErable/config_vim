@@ -1,40 +1,47 @@
 " === LSP Setup ===
 let g:lsp_log_verbose = 1
 
-" Enable LSP key mappings only when a buffer has LSP attached
-augroup lsp_mappings
-  autocmd!
-  autocmd User lsp_buffer_enabled call s:setup_lsp_mappings()
-augroup END
+if executable('pyright')
+    " npm install -g pyright
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'pyright',
+          \ 'cmd': {server_info->['pyright-langserver','--stdio']},
+          \ 'allowlist': ['python'],
+          \ })
+endif
 
-function! s:setup_lsp_mappings() abort
-  nnoremap <buffer> <silent> gd <Plug>(lsp-definition)
-  nnoremap <buffer> <silent> gr <Plug>(lsp-references)
-  nnoremap <buffer> <silent> gi <Plug>(lsp-implementation)
-  nnoremap <buffer> <silent> gt <Plug>(lsp-type-definition)
-  nnoremap <buffer> <silent> K  <Plug>(lsp-hover)
-  nnoremap <buffer> <silent> <leader>rn <Plug>(lsp-rename)
-  nnoremap <buffer> <silent> <leader>f  <Plug>(lsp-format)
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+
+    " Navigation & actions
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> $ <plug>(lsp-hover)
+
+    " Scrolling
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    " Additional mappings
+    nnoremap <buffer> <silent> <leader>Lr <Plug>(lsp-rename)
+    nnoremap <buffer> <silent> <leader>f  <Plug>(lsp-format)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
-" === Autocomplete Setup ===
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_hover = 1
-let g:asyncomplete_auto_signature = 1
-
-" Register LSP as a source safely after Vim starts
-autocmd VimEnter * call asyncomplete#register_source({
-      \ 'name': 'lsp',
-      \ 'allow_list': ['*'],
-      \ 'mark': 'L',
-      \ 'complete': function('asyncomplete#sources#lsp#complete') })
-
-" Completion key mappings
-inoremap <silent><expr> <C-Space> asyncomplete#force_refresh()
-inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set omnifunc per filetype
-autocmd FileType python,cpp,java,yaml,json setlocal omnifunc=lsp#complete
+augroup lsp_install
+    au!
+    " Call s:on_lsp_buffer_enabled only for registered languages
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
