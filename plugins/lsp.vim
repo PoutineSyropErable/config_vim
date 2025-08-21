@@ -31,6 +31,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> $ <plug>(lsp-hover)
+	nnoremap <leader>h :pclose<CR>
 
     " Scrolling (LSP-specific)
     nnoremap <buffer> <expr><c-r> lsp#scroll(+4)

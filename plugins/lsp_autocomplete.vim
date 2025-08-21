@@ -5,10 +5,24 @@ let g:asyncomplete_auto_signature = 1
 
 " Register LSP as a source safely after Vim starts
 autocmd VimEnter * call asyncomplete#register_source({
-      \ 'name': 'lsp',
-      \ 'allow_list': ['*'],
-      \ 'mark': 'L',
-      \ 'complete': function('asyncomplete#sources#lsp#complete') })
+	\ 'name': 'lsp',
+	\ 'allow_list': ['*'],
+	\ 'mark': 'L',
+	\ 'complete': function('asyncomplete#sources#lsp#complete'), 
+    \ })
+
+
+    " \ 'menu': function('g:ShowTypeHint'),
+    " \ 'info': function('g:ShowDoc'),
+" Global functions
+function! g:ShowTypeHint(item)
+  return get(a:item, 'detail', '')
+endfunction
+
+function! g:ShowDoc(item)
+  return get(a:item, 'documentation', '')
+endfunction
+
 
 " Completion key mappings
 inoremap <silent><expr> <C-Space> asyncomplete#force_refresh()
