@@ -104,19 +104,15 @@ autocmd BufEnter * setlocal formatoptions-=cro
 " ======================================
 " Sign definitions (DAP breakpoints)
 " ======================================
-" only if you have a plugin handling signs
-sign define DapBreakpoint text=🛑 texthl=Error linehl= numhl=
-sign define DapStopped text=✋ texthl=Title linehl= numhl=
-sign define DapLogPoint text=📝 texthl=Question linehl= numhl=
 
 " ======================================
 " Verbose logging
 " ======================================
-if !isdirectory(expand("$HOME/.vim_logs"))
-	call mkdir(expand("$HOME/.vim_logs"), "p")
-endif
-set verbosefile=$HOME/.vim_logs/vim_log.txt
-set verbose=1
+"if !isdirectory(expand("$HOME/.vim_logs"))
+"	call mkdir(expand("$HOME/.vim_logs"), "p")
+"endif
+"set verbosefile=$HOME/.vim_logs/vim_log.txt
+"set verbose=1
 
 " ======================================
 " CSV plugin settings (if installed)
